@@ -1,0 +1,35 @@
+.grid-container {
+    /* border: green solid ; */
+    width: 100%;
+    height: 30.5rem;
+    display: grid;
+    grid-template-columns: 1.4fr 0.5fr 0.4fr 0.7fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+
+.card.clips {
+    grid-row: span 2;
+}
+
+.card.history {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.card.progress {
+    grid-column: 3 / span 2;
+    grid-row: 2;
+}
+
+.card.exam {
+    grid-column: 2 / span 2;
+    grid-row: 1;
+}
+
+.card.badge {
+    grid-column: 4;
+    grid-row: 1;
+    grid-row-start: 1;
+}

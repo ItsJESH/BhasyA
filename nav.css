@@ -1,0 +1,85 @@
+
+
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: "Poppins",Arial, Helvetica, sans-serif, Courier, monospace;
+}
+
+
+:root{
+    --main-color:white;
+}
+
+body, .main-page{
+    height: 100vh;
+    width: 100vw;
+    background: #000000;
+    color:var(--main-color)
+}
+
+.flex-container{
+    display: flex;
+}
+
+a{
+    text-decoration: none;
+    color: var(--main-color);
+}
+
+i{
+    font-size: 1.2rem;
+}
+
+aside{
+    width: 5rem;
+    background-color: #161717;
+    box-shadow: rgb(70, 70, 70) 0px 0px 10px;
+    overflow: hidden; 
+}
+
+.nav{
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+}
+
+.iconname{
+    display: block;
+    font-size: 0.8rem;
+    /* border: red solid ; */
+}
+
+.logo{
+    margin-top: 1.5rem;
+}
+
+.bhasyalogomain{
+    width: 4rem;
+}
+
+.navicon, .navup, .navdown{
+    flex-direction: column;
+    align-items: center;
+    /* border: blue solid; */
+}
+.navicon{
+    margin-block: 1rem;
+    height: 100%;
+    justify-content: space-between;
+    /* border: yellow solid; */
+}
+
+.icon{
+    margin-block: 1.25rem;
+    width: 100%;
+    /* border: green solid ; */
+    text-align: center;
+}
+
+.icona{
+    text-align: center;
+    /* border: blue solid; */
+}
+
