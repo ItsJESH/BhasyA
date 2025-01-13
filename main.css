@@ -383,7 +383,7 @@ footer {
   .examcc{
     top: 85%;
     left: 50%;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: #000000;
   }
   
@@ -396,7 +396,7 @@ footer {
   footer {
     margin-top: 7%;
     /* margin-bottom: 2rem; */
-    padding-bottom:19%;
+    padding-bottom:20%;
     text-align: center;
     width: 100%;
     font-size: 0.5rem;
