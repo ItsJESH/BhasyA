@@ -1,5 +1,3 @@
-
-
 *{
     margin: 0%;
     padding: 0%;
@@ -34,6 +32,8 @@ i{
 
 aside{
     width: 5rem;
+    
+    text-shadow: white 0px 0px 3px;
     background-color: #161717;
     box-shadow: rgb(70, 70, 70) 0px 0px 10px;
     overflow: hidden; 
@@ -83,3 +83,26 @@ aside{
     /* border: blue solid; */
 }
 
+.navmob{
+    display: none;
+}
+
+@media (max-width: 768px) {
+    aside{
+        display: none;
+    }
+
+    .navmob{
+        position: fixed;
+        bottom: 0;
+        z-index: 1;
+        width: 100%;
+        text-shadow: white 0px 0px 3px;
+        background-color: #161717fa;
+        /* border: red solid 1px; */
+        box-shadow: #6d6d6d 1px 1px 10px;
+        height: fit-content;
+        display: flex;
+        justify-content: space-around;
+    }
+}

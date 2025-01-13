@@ -1,13 +1,12 @@
 .grid-container {
     /* border: green solid ; */
     width: 100%;
-    height: 30.5rem;
+    height: 60vh;
     display: grid;
     grid-template-columns: 1.4fr 0.5fr 0.4fr 0.7fr;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr); 
     gap: 2rem;
 }
-
 
 .card.clips {
     grid-row: span 2;
@@ -32,4 +31,39 @@
     grid-column: 4;
     grid-row: 1;
     grid-row-start: 1;
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        width: 100%;
+        display: grid;
+        height: auto; 
+        grid-template-columns: 1fr 1fr; 
+        grid-template-rows: repeat(3, minmax(150px, auto)); 
+        gap: 3%;
+    }
+    
+    .card.clips {
+        grid-column: 1 / span 2;
+        grid-row: 1;
+    }
+    
+    .card.history {
+        display: none;
+    }
+    
+    .card.progress {
+        grid-column: 2;
+        grid-row: 3;
+    }
+    
+    .card.exam {
+        grid-column: 1 / span 2;
+        grid-row: 2;
+    }
+    
+    .card.badge {
+        grid-column: 1;
+        grid-row: 3;
+    }
 }
