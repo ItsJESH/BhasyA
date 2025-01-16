@@ -1,5 +1,3 @@
-/* border: yellow solid; */
-/* min-width: auto; */
 * {
   padding: 0%;
   margin: 0%;
@@ -24,6 +22,10 @@
 }
 
 .APPNAME {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   padding: 0.5rem;
   font-size: 4.25rem;
   font-family: "Tangerine", serif;
@@ -114,7 +116,7 @@
   box-shadow: #000000 1px 1px 10px;
   font-size: 2rem;
   margin-top: auto;
-  min-width: fit-content; 
+  min-width: fit-content;
   padding: 0.2rem 0.5rem;
 }
 
@@ -146,27 +148,27 @@
 }
 
 .clipscard {
-  background-image: url("./Containt/clipsbatman.png");
+  background-image: url("./Resource/clipsbatman.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .hiscard {
-  background-image: url("./Containt/historybrbd.jpeg");
+  background-image: url("./Resource/historybrbd.jpeg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
 .examcard {
-  background-image: url("./Containt/examst2.png");
+  background-image: url("./Resource/examst2.png");
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
 }
 
 .bedcard {
-  background-image: url("./Containt/beggot.png");
+  background-image: url("./Resource/beggot.png");
   background-repeat: no-repeat;
   background-position: center;
   filter: none;
@@ -174,7 +176,7 @@
 }
 
 .procard {
-  background-image: url("./Containt/progressironman.png");
+  background-image: url("./Resource/progressironman.png");
   background-repeat: no-repeat;
   background-position: center;
   filter: none;
@@ -188,7 +190,7 @@
 
 .clipcc {
   position: absolute;
-  top: 15%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 1.5rem;
@@ -200,7 +202,6 @@
   position: absolute;
   top: 80%;
   left: 50%;
-  width: 60%;
   transform: translate(-50%, -50%);
   font-size: 1.5rem;
   text-align: center;
@@ -240,10 +241,6 @@
   filter: none;
 }
 
-.examcc p {
-  text-shadow: #000000 1px 1px 10px;
-}
-
 footer {
   color: #fff;
   text-align: center;
@@ -264,7 +261,7 @@ footer {
   text-shadow: white 1px 1px 10px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 520px) {
   .rightcon {
     padding: 0;
   }
@@ -273,7 +270,7 @@ footer {
     flex-direction: column;
     margin: 0%;
   }
-  
+
   .left,
   .right {
     width: 100%;
@@ -299,17 +296,17 @@ footer {
   .select {
     font-size: 0.9rem;
   }
-  
+
   .right {
-    order: -1; 
+    order: -1;
   }
-  
+
   .status {
     flex-wrap: wrap;
     justify-content: center;
     padding-block: 0.2rem;
   }
-  
+
   .statusboxs {
     width: 40%;
     min-height: fit-content;
@@ -322,7 +319,7 @@ footer {
   .cyan {
     width: 85%;
   }
-  
+
   .cyan .sbox {
     flex-direction: row;
     align-items: center;
@@ -340,7 +337,7 @@ footer {
     font-size: 1.3rem;
     margin-top: 2%;
   }
-  
+
   .downcard {
     display: flex;
     margin-inline: 1.5rem;
@@ -352,7 +349,7 @@ footer {
     text-decoration: none;
     filter: none;
   }
-  
+
   .clipcc {
     top: 50%;
     left: 50%;
@@ -362,14 +359,13 @@ footer {
   .procc {
     top: 90%;
     left: 50%;
-    font-size: 1.3rem;
     color: white;
   }
-  
+
   .examcc {
-    top: 90%;
+    top: 85%;
     left: 50%;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: #000000;
   }
 
@@ -381,7 +377,8 @@ footer {
 
   footer {
     margin-top: 7%;
-    padding-bottom: 20%;
+    padding-bottom: 17%;
+    border: red solid;
     text-align: center;
     width: 100%;
     font-size: 0.5rem;

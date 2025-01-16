@@ -1,0 +1,237 @@
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --main-color: White;
+}
+
+a {
+  text-decoration: none;
+}
+body {
+  background-image: url(./Resource/lgbg.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background: rgba(0, 0, 0,);
+  backdrop-filter: blur(1px) brightness(20%);
+  overflow: hidden;
+  margin: 0;
+  padding: 5%;
+}
+
+header {
+  display: flex;
+  height: auto;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.logo {
+  width: max(4.5rem, 5%);
+}
+
+.logo img {
+  width: 100%;
+}
+
+.APPNAME {
+  padding: 0.5rem;
+  font-size: max(4.25rem, 5%);
+  font-family: "Tangerine", serif;
+  color: white;
+  text-shadow: rgb(255, 255, 255) 1px 1px 25px;
+}
+
+.hasya {
+  font-family: "Lovers Quarrel", serif;
+  font-weight: lighter;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+.logincon {
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  width: 400px;
+  border-radius: 10px;
+  overflow: hidden;
+  backdrop-filter: blur(1.9rem);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 2px 2px 20px rgba(255, 255, 255, 0.5);
+}
+
+.loginhead {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.loginhead h3 {
+  font-size: 1.3rem;
+  padding-block: 5%;
+  text-align: center;
+}
+
+.loginhead .left {
+  background-color: rgba(255, 255, 255, 0);
+  width: 100%;
+}
+
+.loginhead .right {
+  background-color: rgb(83, 83, 83, 0.5);
+  width: 100%;
+  border-radius: 0 10px 0 10px;
+  color: rgba(255, 255, 255, 0.83);
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 5px;
+}
+
+.loginhead .right a {
+  color: rgba(255, 255, 255, 0.83);
+}
+
+.loginbody {
+  padding: 5% 5% 2% 5%;
+}
+
+form * {
+  color: white;
+  letter-spacing: 0.5px;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+}
+input {
+  display: block;
+  height: 40px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0 10px;
+  font-size: 0.9rem;
+}
+.le {
+  margin-bottom: 1rem;
+}
+.info a {
+  display: flex;
+  justify-content: end;
+  font-size: 0.7rem;
+  padding-top: 0.2rem;
+}
+::placeholder {
+  color: #e5e5e5;
+  font-size: 0.8rem;
+}
+
+.lgbtn {
+  padding-inline: 25%;
+}
+
+.btn {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-top: 4%;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  padding: 2%;
+  cursor: pointer;
+  border: rgba(255, 255, 255, 0.4) solid 1px;
+  transition: background-color 0.8s, color 0.5s;
+}
+
+.btn:hover {
+  box-shadow: rgba(255, 255, 255, 0.4) 0px 0px 10px;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.withother {
+  margin-top: 5%;
+}
+
+.orline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.line {
+  width: 100%;
+  border-radius: 200%;
+  border-top: rgba(255, 255, 255, 0.5) 2px solid;
+}
+
+.ortxt {
+  margin-inline: 2%;
+  font-size: 1rem;
+  color: #ffffffc0;
+}
+
+.loginwith {
+  text-align: center;
+  font-size: 0.9rem;
+  padding-block: 1.2%;
+  color: #ffffffc0;
+}
+
+.social {
+  display: flex;
+  justify-content: space-between;
+}
+.social div {
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  padding: 2%;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-inline: 1rem;
+  transition: background-color 0.8s, color 0.5s;
+  text-align: center;
+
+  border: rgba(255, 255, 255, 0.4) solid 1px;
+}
+.social div:hover {
+  box-shadow: rgba(255, 255, 255, 0.4) 0px 0px 10px;
+  background-color: rgba(255, 255, 255, 0.25);
+  text-shadow: gold 0px 0px 10px;
+}
+
+.lastline {
+  font-size: 0.8rem;
+  margin-top: 5%;
+  text-align: center;
+  color: #ffffffc0;
+}
+a {
+  text-shadow: rgba(255, 255, 255, 0.338) 0px 0px 3px;
+}
+a:hover {
+  cursor: pointer;
+  color: white;
+  text-shadow: white 0px 0px 10px;
+}
+
+a:active {
+  text-shadow: rgba(255, 217, 0, 0.562) 0px 0px 10px;
+}
+
+@media (max-width: 520px) {
+  .body {
+    background-size: auto;
+  }
+  .logincon {
+    width: 80%;
+    margin-top: 10%;
+  }
+}
