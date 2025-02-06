@@ -62,7 +62,7 @@ main {
   justify-content: center;
 }
 
-.logincon {
+.logincon,.vcon {
   background-color: rgba(255, 255, 255, 0);
   color: white;
   width: 400px;
@@ -72,6 +72,46 @@ main {
   border: 2px solid rgba(255, 255, 255, 0.2);
   box-shadow: 2px 2px 20px rgba(255, 255, 255, 0.5);
 }
+
+
+
+.vcon2 {
+  height: 20rem;
+  margin: 7%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vcon2 h3{
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.vcon2 .vbtn{
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 70%;
+  padding: 2%;
+  font-size: 1rem;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s;
+  text-align: center;
+}
+.vcon2 .vbtn:hover{
+  box-shadow: rgba(255, 255, 255, 0.4) 0px 0px 10px;
+  background-color: rgba(255, 255, 255, 0.25);
+  text-shadow: gold 0px 0px 10px;
+}
+.vcon2 .vemsg{
+  margin-top: 10%;
+  font-size: 0.8rem;
+  text-align: center;
+  color: red;
+}
+
 
 .loginhead {
   display: flex;
@@ -222,6 +262,11 @@ a:hover {
   text-shadow: white 0px 0px 10px;
 }
 
+.ermsg{
+  color: red;
+  text-align: center;
+}
+
 a:active {
   text-shadow: rgba(255, 217, 0, 0.562) 0px 0px 10px;
 }
@@ -230,7 +275,7 @@ a:active {
   .body {
     background-size: auto;
   }
-  .logincon {
+  .logincon,.vcon {
     width: 80%;
     margin-top: 10%;
   }

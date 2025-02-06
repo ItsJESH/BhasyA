@@ -1,0 +1,82 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Logs
+logs
+*.log
+logs/
+debug.log
+error.log
+server.log
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# Build artifacts
+dist/
+build/
+out/
+.next/
+.vercel/
+.cache/
+
+# Babel and TypeScript
+*.tsbuildinfo
+*.tscache
+*.ts
+*.tsx
+*.js.map
+*.d.ts
+
+# React specific
+public/*.hot-update.js
+public/*.hot-update.json
+public/assets/
+coverage/
+
+# npm and yarn
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Sentry and crash logs
+sentry-debug-id-*.map
+sentry-cli
+
+# Webpack & Parcel
+.cache/
+.parcel-cache/
+*.webpack
+
+# Temporary files
+tmp/
+temp/
+
+# ESLint and Prettier
+.eslintcache
+.prettierignore
+
+# GitHub workflows and actions
+.github/
+
+# Express sessions
+sessions/
+session-data/
+

@@ -8,7 +8,7 @@ document.getElementById("maincon").addEventListener("click", (event) => {
     const link = document.createElement("link");
     link.id = "rgcss";
     link.rel = "stylesheet";
-    link.href = "./rgcss.css";
+    link.href = "rgcss.css";
     document.head.appendChild(link);
     document.getElementById("rgcon").style.display = "block";
     document.getElementById("lgcon").style.display = "none";
@@ -19,7 +19,7 @@ document.getElementById("maincon").addEventListener("click", (event) => {
   const link = document.createElement("link");
   link.id = "lgcss";
   link.rel = "stylesheet";
-  link.href = "./lgcss.css";
+  link.href = "lgcss.css";
   document.head.appendChild(link);
   document.getElementById("lgcon").style.display = "block";
   document.getElementById("rgcon").style.display = "none";

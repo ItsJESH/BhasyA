@@ -42,16 +42,17 @@
                     </div>
                 </div>
                 <div class="loginbody">
-                    <form class="logininfo">
+                    <form class="logininfo" action="/login" method="POST">
+                        
                         <div class="info">
                             <label for="username">Username</label>
-                            <input type="text" placeholder="Username or Email " required class="le" id="username">
+                            <input type="text" placeholder="Username or Email " required class="le" name="username" id="username">
                             <label for="password">Password</label>
-                            <input type="password" placeholder="Password" required id="password">
+                            <input type="password" placeholder="Password" required name="password" id="password">
                             <a href="#">Forget Password!</a>
                         </div>
                         <div class="lgbtn">
-                            <button class="btn">
+                            <button class="btn" type="submit">
                                 Login
                             </button>
                         </div>
@@ -87,23 +88,22 @@
                         </div>
                         </div>
                 <div class="loginbody">
-                    
-                    <form class="info">
+                    <form class="info" action="/register" method="post">
                     <div class="infoleft">
                             <label for="fullName">Full Name</label>
-                            <input type="text" placeholder="Name" id="fullName" required>
+                            <input type="text" placeholder="Name" id="fullName" name="fullName" required>
                             <label for="uname">Username</label>
-                            <input type="text" placeholder="Username" id="uname" required>
+                            <input type="text" placeholder="Username" id="uname" name="uname" required>
                             <label for="bday">Birth Date</label>
-                            <input type="Date" placeholder="mm-dd-yyyy" id="bday" required>
+                            <input type="Date" placeholder="mm-dd-yyyy" id="bday" name="bday" required>
                             <label for="gender">Gender:</label>
                             <div class="custom-radio-group">
                                 <label class="custom-radio">
-                                    <input type="radio" name="gender" value="male" required>
+                                    <input type="radio" name="gender"  id="gender" value="Male" required>
                                     <div class="custom-button">Male</div>
                                     </label>
                                 <label class="custom-radio">
-                                    <input type="radio" name="gender" value="female">
+                                    <input type="radio" name="gender"  id="gender" value="Female">
                                     <div class="custom-button">Female</div>
                                     </label>
                                 </label>
@@ -111,18 +111,17 @@
                         </div>
                         <div class="inforight">
                             <label for="email">Email</label>
-                            <input type="email" placeholder="Email" id="email" required>
+                            <input type="email" placeholder="Email" id="email" name="email" required>
                             <label for="mobile">Mobile</label>
-                            <input type="number" placeholder="Mobile" id="number" maxlength="10" pattern="\d{10}"
+                            <input type="number" placeholder="Mobile" id="number" name="mobile" maxlength="10" pattern="\d{10}"
                                 required title="Mobile number must be 10 digits">
                             <label for="password">Password</label>
-                            <input type="password" placeholder="Password" id="password" required>
+                            <input type="password" placeholder="Password" id="password" name="password" required>
                             <label for="cpassword">Confirm Password</label>
-                            <input type="password" placeholder="Confirm Password" id="cpassword" required>
+                            <input type="password" placeholder="Confirm Password" id="cpassword" name="cpassword" required>
                             </div>
-                            <p id="error-message" style="color: red;">Please fill in all fields and make sure the passwords match!</p>
                             <div class="lgbtn">
-                            <button class="rbtn">
+                            <button class="rbtn" type="submit">
                                 Register
                             </button>
                         </div>
@@ -150,6 +149,21 @@
     </div>
 
     <script src="./lr.js"></script>
+    <script>
+        
+        // Function to get URL parameters
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Show alert if there is an error message in the URL
+        const errorMessage = getQueryParam('error');
+        if (errorMessage) {
+            alert(errorMessage);
+            window.history.replaceState({}, document.title, window.location.pathname); // Remove error from URL
+        }
+    </script>
 </body>
 
 </html>
