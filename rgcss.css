@@ -68,6 +68,7 @@ main {
   color: white;
   width: 600px;
   border-radius: 10px;
+  position: -50px;
   overflow: hidden;
   backdrop-filter: blur(2rem);
   border: 2px solid rgba(255, 255, 255, 0.2);
@@ -102,7 +103,7 @@ main {
 }
 
 .loginbody {
-  padding: 5% 5% 1% 5%;
+  padding: 1% 5% 1% 5%;
 }
 .info {
   display: flex;
