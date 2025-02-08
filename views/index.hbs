@@ -62,7 +62,7 @@
             <header class="header">
                 <div class="left">
                     <div class="welcome">
-                        Welcome,{{{ username }}}
+                        Welcome,&nbsp;{{{ user.name }}}
                     </div>
                     <div class="lan">
                         Want to Learn:
@@ -86,23 +86,23 @@
                 <div class="maincon">
                     <div class="status">
                         <div class="statusboxs cyan">
-                            <div class="sbox">Total Clips Watch <div class="nbx numbersfonts">100</div>
+                            <div class="sbox">Total Clips Watch <div class="nbx numbersfonts">{{{user.userRecordId.overall.totalClips}}}</div>
                             </div>
                         </div>
                         <div class="statusboxs blue">
-                            <div class="sbox">Total Watch Time<div class="nbx numbersfonts">100</div>
+                            <div class="sbox">Total Watch Time<div class="nbx numbersfonts">{{{user.userRecordId.overall.totalTimeSpent}}}</div>
                             </div>
                         </div>
                         <div class="statusboxs purple">
-                            <div class="sbox">Total Test<div class="nbx numbersfonts">100</div>
+                            <div class="sbox">Total Test<div class="nbx numbersfonts">{{{user.userRecordId.overall.totalExams}}}</div>
                             </div>
                         </div>
                         <div class="statusboxs yellow">
-                            <div class="sbox">Total Score<div class="nbx numbersfonts">100</div>
+                            <div class="sbox">Total Score<div class="nbx numbersfonts">{{{user.userRecordId.overall.totalScore}}}</div>
                             </div>
                         </div>
                         <div class="statusboxs pink">
-                            <div class="sbox">Streak<div class="nbx numbersfonts">100</div>
+                            <div class="sbox">Streak<div class="nbx numbersfonts">{{{user.userRecordId.overall.longestStreak}}}</div>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const userActivitySchema = new mongoose.Schema({
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User123" },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     username: {type: String},
     activities: [{
         type: {type: String},  // "Login", "Logout", "Password Change", etc.

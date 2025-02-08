@@ -10,6 +10,8 @@ const userSchema = new mongoose.Schema({
     DOB: { type: Date, required: true },
     verified: { type: Boolean, default: false }, 
     verificationToken: String,
+    userRecordId:{ type: mongoose.Schema.Types.ObjectId, ref: "UserRecord" },
+    userActivityId:{type: mongoose.Schema.Types.ObjectId, ref: "UserActivity" },
 }, {timestamps: true});
 
-module.exports = mongoose.model("User123", userSchema);
+module.exports = mongoose.model("User", userSchema);

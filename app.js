@@ -19,9 +19,10 @@ mongoose.connect(process.env.MONGO_URI).then(() => {console.log("DB Connection S
   app.use(cookieParser());
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(express.urlencoded({ extended: true }));
   app.use(
     session({
-      secret: process.env.SessionsKey,
+    secret: process.env.SessionsKey,
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false },
@@ -47,6 +48,13 @@ app.get("/*", (req, res) => {
   res.send("Page Not Found!");
 });
 
+
+// app.use((err,req,res,next) => {
+//   if (err) {
+//     res.send("Error: " + err.message)
+//   }
+//   next();
+// })
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
