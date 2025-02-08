@@ -76,6 +76,12 @@
   padding-top: 0.5rem;
   box-shadow: #606060d1 1px 1px 5px;
   margin-inline: 1.2rem;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+  -webkit-user-drag: none;
 }
 
 .cyan {
@@ -259,6 +265,48 @@ footer {
 .footer-link:hover {
   color: #ffffff;
   text-shadow: white 1px 1px 10px;
+}
+
+.menu-btn{
+  background-color: rgba(255, 238, 238, 0);
+  color: white;
+  border: none;
+}
+
+.popup-menu {
+  display: none;
+  position: absolute;
+  color: white;
+  background:#161717;
+  box-shadow: 0px 0px 0px rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  bottom: 35px;
+  left: 5rem;
+  min-width: 125px;
+  z-index: 1000;
+}
+
+/* Menu items */
+.popup-menu a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.popup-menu a div{
+  display: flex;
+  align-items: center;
+}
+
+.popup-menu a:hover {
+  background: #1c1c1c;
+}
+
+/* Hide last border */
+.popup-menu a:last-child {
+  border-bottom: none;
 }
 
 @media (max-width: 520px) {

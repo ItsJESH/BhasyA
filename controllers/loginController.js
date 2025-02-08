@@ -1,133 +1,78 @@
 const User = require("../models/users");
 const UserActivity = require("../models/userActivity");
-const UserRecord = require("../models/userRecord");
 
 const CryptoJS = require("crypto-js");
-const sendEmail = require("../utils/sendEmail");
-const Crypto = require("crypto");
+const jwt = require("jsonwebtoken");
 
-const secretKey = process.env.SECRET_KEY || "mySuperSecretKey";
+const secretKey = process.env.SECRET_KEY;
 
 exports.loginPage = (req, res) => {
-    res.render('login');  // Rendering the login page using Handlebars
+  res.render("login"); // Rendering the login page using Handlebars
 };
 
 // Handle login request
 exports.loginUser = async (req, res) => {
-    const { username, password } = req.body;
+  const { username, password } = req.body;
+  const uname = username.trim();
+  // Check if username or email exists in the mock data
+  const user = await User.findOne({
+    $or: [{ email: uname }, { username: uname }],
+  });
+  // console.log(user);
+  if (user) {
+    // Verify password using bcrypt jsonwebtoken
+    if (!user.verified) {
+      return res.redirect("/verify");
+    }
+    const decryptedPassword = CryptoJS.AES.decrypt(
+      user.password,
+      secretKey
+    ).toString(CryptoJS.enc.Utf8);
 
-    // Check if username or email exists in the mock data
-    const user = await User.findOne({ $or: [{ email:username },{ username:username }]});
-    // console.log(user);
-    if (user) {
-        // Verify password using bcrypt
-        if (!user.verified) {
-            return res.redirect("/verify");
-        }
-        const decryptedPassword = CryptoJS.AES.decrypt(user.password, secretKey).toString(CryptoJS.enc.Utf8);
-            if ( password === decryptedPassword) { // Password matches
-                req.session.user = user.username; // Store username in session
-                return res.redirect('/');
-            } else {
-                return res.redirect('/login?error=' + encodeURIComponent('Invalid Username or Password'));
-            }
+    if (password === decryptedPassword) {
+      // Password matches
+      const token = jwt.sign(
+        { userId: user._id, username: user.username },
+        process.env.JWT_SECRET, // Secret Key
+        { expiresIn: "7d" } // Token expires in 7 days
+      );
+      // Send token as HTTP-only cookie (More Secure)
+      res.cookie("authToken", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production", // Only secure in production
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      }); // Store username in session
+      let userActivity = await UserActivity.findOne({ userId: user._id });
+
+      if (!userActivity) {
+        // If the user activity doesn't exist, create a new one
+        userActivity = new UserActivity({
+          userId: user._id,
+          username: user.username,
+          activities: [],
+        });
+      }
+
+      // Add login activity to activities array
+      userActivity.activities.push({
+        type: "Login",
+        ip: req.ip,
+        device: req.headers["user-agent"],
+        cookie: {
+          value: token,
+          expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 30 days expiration
+        },
+      });
+
+      // Save the activity in the userActivity collection
+      await userActivity.save();
+      return res.redirect("/");
     } else {
-        return res.redirect('/login?error=' + encodeURIComponent('User not found'));
+      return res.redirect(
+        "/login?error=" + encodeURIComponent("Invalid Username or Password")
+      );
     }
-};
-
-exports.registerUser = async (req, res) => {
-    try {
-        const { fullName, uname, email, mobile, password, gender, bday,cpassword } = req.body;
-        // console.log(fullName, uname, email, mobile, password, gender, bday, cpassword);
-        // Check if user already exists
-        const verificationToken = Crypto.randomBytes(32).toString("hex");
-        // console.log(verificationToken);
-        const existingUser = await User.findOne({ $or: [{ email:email }, { username:uname }] });
-        if (existingUser) {
-            // console.log(existingUser)
-            return res.status(409).redirect('/login?error=' + encodeURIComponent('User already exists with this email or username!'));
-        }
-        if( password != cpassword ) {
-            return res.status(409).redirect('/login?error=' + encodeURIComponent('Password and Confirm Password are not the same!'));
-        }
-        // Create new user
-        const encryptedPassword = CryptoJS.AES.encrypt(password, secretKey).toString();
-        const newUser = new User({
-            name: fullName,
-            username: uname,
-            email: email,
-            number: mobile,
-            password: encryptedPassword,
-            gender: gender,
-            DOB: bday,
-            verificationToken: verificationToken
-        });
-        const verificationLink = `http://localhost:8383/verify/${verificationToken}`;
-        // console.log(verificationLink);
-        await sendEmail(email, "Verify Your Email", `Click this link to verify your account: ${verificationLink}`);
-
-        await newUser.save();
-        res.redirect('/verify');
-    } catch (error) {
-        res.status(500).send("Error registering user: " + error.message);
-    }
-};
-
-exports.getVerify = (req,res) => {
-    res.render('verify')
-}
-
-exports.verifyUser = async (req, res) => {
-    try {
-        const { token } = req.params;
-        const user = await User.findOne({ verificationToken: token });
-
-        if (!user) {
-            return res.status(400).send("Invalid verification link.");
-        }
-
-        // Update user as verified
-        user.verified = true;
-        user.verificationToken = null;  // Remove token after verification
-        await user.save();
-        console.log("Verified user");
-        const today = new Date().toISOString().split("T")[0]; // This will get the format YYYY-MM-DD
-        await UserRecord.create({
-            userId: user._id,
-            username: user.username,
-            dailyRecords: {
-                [today]: {
-                    clipsWatched: 0,
-                    timeSpent: 0,
-                    badgesEarned: 0,
-                    examsGiven: 0,
-                    streakDays: 0 // Starting streak from day 0
-                }
-            },
-            overall: {}
-        });
-        console.log("user Record created");
-        console.log(req.ip)
-        await UserActivity.create({
-            userId: user._id,
-            username: user.username,
-            activities: [{
-                type: "Account Verified",
-                timestamp: new Date(),
-                ip: req.ip,
-                device: req.headers["user-agent"],
-                cookie: {
-                    value: req.session.id,
-                    expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
-                }
-            }]
-        });
-
-        console.log("user Activity created");
-
-        res.redirect("/login?message=Account verified successfully!");  // Redirect to login page
-    } catch (error) {
-        res.status(500).send("Error verifying user");
-    }
+  } else {
+    return res.redirect("/login?error=" + encodeURIComponent("User not found"));
+  }
 };

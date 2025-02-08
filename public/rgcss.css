@@ -35,6 +35,8 @@ header {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  pointer-events: none;
+  -webkit-user-drag: none;
 }
 
 .logo {

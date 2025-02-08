@@ -6,20 +6,22 @@ const session = require("express-session");
 const hbs = require("hbs");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 const port = process.env.PORT || 3000;
 mongoose.connect(process.env.MONGO_URI).then(() => {console.log("DB Connection Success");
-  }).catch((err) => {console.error("DB Connection Failed");
-    console.error(err);
-    process.exit(1);});
- 
-// Middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(
-  session({
-    secret: process.env.SessionsKey,
+}).catch((err) => {console.error("DB Connection Failed");
+  console.error(err);
+  process.exit(1);});
+  
+  // Middleware
+  app.use(cookieParser());
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(
+    session({
+      secret: process.env.SessionsKey,
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false },

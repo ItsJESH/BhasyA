@@ -45,14 +45,19 @@
                         </a>
                     </div>
                     <div class="navdown flex-container">
-                        <a href="./login.html" class="icon">
+                        <button href="./login.html" class="icon menu-btn" onclick="toggleMenu()">
                             <i class="fa-solid fa-sliders icona"></i>
                             <div class="iconname" id="iconname">Setting</div>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </nav>
         </aside>
+        <div class="popup-menu" id="popupMenu">
+        <a href="#"><div class="iconname" id="iconname"><i class="fa-regular fa-user icona">&nbsp;</i>User</div></a>
+        <a href="#"><div class="iconname" id="iconname"><i class="fa-regular fa-message">&nbsp;</i>Feedback</div></a>
+        <a href="/logout"><div class="iconname" id="iconname"><i class="fa-solid fa-right-from-bracket">&nbsp;</i>Logout</div></a>
+        </div>
         <div class="rightcon">
             <header class="header">
                 <div class="left">
@@ -164,6 +169,28 @@
             </a>
         </div>
     </div>
+
+<script>
+
+function toggleMenu() {
+            var menu = document.getElementById("popupMenu");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        }
+
+        // Close the menu when clicking outside
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById("popupMenu");
+            var button = document.querySelector(".menu-btn");
+
+            if (!menu.contains(event.target) && !button.contains(event.target)) {
+                menu.style.display = "none";
+            }
+        });
+</script>
 
 </body>
 
