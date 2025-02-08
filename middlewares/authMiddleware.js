@@ -6,10 +6,10 @@ const authMiddleware = (req, res, next) => {
   if (!token) {
     return res
       .status(401)
-      .redirect("/login?error=" + encodeURIComponent("Not authorized"));
+      .redirect("/login?error=" + encodeURIComponent("Please Login Again"));
     // No token found
   }
-
+ 
   jwt.verify(token, process.env.JWT_SECRET, (err) => {
     if (err) {
       return res

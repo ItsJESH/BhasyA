@@ -5,9 +5,10 @@ const UserRecord = require("../models/userRecord");
 const CryptoJS = require("crypto-js");
 const sendEmail = require("../utils/sendEmail");
 const Crypto = require("crypto");
+const userActivity = require("../models/userActivity");
+const { console } = require("inspector");
 
 const secretKey = process.env.SECRET_KEY;
-
 
 exports.registerUser = async (req, res) => {
   try {
@@ -21,16 +22,16 @@ exports.registerUser = async (req, res) => {
       bday,
       cpassword,
     } = req.body;
-    // console.log(fullName, uname, email, mobile, password, gender, bday, cpassword);
+    // 
     // Check if user already exists
     const verificationToken = Crypto.randomBytes(32).toString("hex");
-    // console.log(verificationToken);
+    // 
     const unme = uname.trim();
     const existingUser = await User.findOne({
       $or: [{ email: email }, { username: unme }],
     });
     if (existingUser) {
-      // console.log(existingUser)
+      // 
       return res
         .status(409)
         .redirect(
@@ -66,7 +67,7 @@ exports.registerUser = async (req, res) => {
       verificationToken: verificationToken,
     });
     const verificationLink = `http://localhost:8383/verify/${verificationToken}`;
-    // console.log(verificationLink);
+    // 
     await sendEmail(
       email,
       "Verify Your Email",
@@ -81,60 +82,72 @@ exports.registerUser = async (req, res) => {
 };
 
 exports.getVerify = (req, res) => {
-  res.render("verify");
+  try {
+    res.render("verify");
+  } catch (e) {
+    res.status(500).send("Error Rendring Page: " + error.message);
+  }
 };
 
 
-
 exports.verifyUser = async (req, res) => {
-    try {
-      const { token } = req.params;
-      const user = await User.findOne({ verificationToken: token });
   
-      if (!user) {
-        return res.status(400).send("Invalid verification link.");
-      }
+  const token = req.params.token;
   
-      // Update user as verified
-      user.verified = true;
-      user.verificationToken = null; // Remove token after verification
-      await user.save();
-      const today = new Date().toISOString().split("T")[0]; // This will get the format YYYY-MM-DD
-      await UserRecord.create({
-        userId: user._id,
-        username: user.username,
-        dailyRecords: {
-          [today]: {
-            clipsWatched: 0,
-            timeSpent: 0,
-            badgesEarned: 0,
-            examsGiven: 0,
-            streakDays: 0, // Starting streak from day 0
+    const user = await User.findOne({ verificationToken: token });
+    
+    if (!user) {
+      return res.status(400).send("Invalid verification link.");
+    }
+    
+    // Update user as verified
+    
+    user.verified = true;
+    user.verificationToken = null; // Remove token after verification
+    await user.save();
+    
+    const today = new Date().toISOString().split("T")[0]; // This will get the format YYYY-MM-DD
+    const userrec = new UserRecord({
+      userId: user._id,
+      username: user.username,
+      dailyRecords: {
+        [today]: {
+          clipsWatched: 0,
+          timeSpent: 0,
+          badgesEarned: 0,
+          examsGiven: 0,
+          streakDays: 0, // Starting streak from day 0
+        },
+      },
+      overall: {},
+    });
+    
+
+    const useract = new UserActivity({
+      userId: user._id,
+      username: user.username,
+      activities: [
+        {
+          type: "Account Verified",
+          timestamp: new Date(),
+          ip: req.ip,
+          device: req.headers["user-agent"],
+          cookie: {
+            value: user._id,
+            expiresAt: new Date(),
           },
         },
-        overall: {},
-      });
-      console.log(req.ip);
-      await UserActivity.create({
-        userId: user._id,
-        username: user.username,
-        activities: [
-          {
-            type: "Account Verified",
-            timestamp: new Date(),
-            ip: req.ip,
-            device: req.headers["user-agent"],
-            cookie: {
-              value: user._id,
-              expiresAt: new Date(),
-            },
-          },
-        ],
-      });
+      ],
+    });
+    
+    
+    await useract.save();
+    
+    await userrec.save();
+    
+    await User.findByIdAndUpdate(user._id,
+      {$set: {userRecordId:userrec._id,userActivityId:useract._id}}
+      );
+    res.redirect("/login?message=Account verified successfully!"); // Redirect to login page
   
-      res.redirect("/login?message=Account verified successfully!"); // Redirect to login page
-    } catch (error) {
-      res.status(500).send("Error verifying user");
-    }
-  };
-  
+};
