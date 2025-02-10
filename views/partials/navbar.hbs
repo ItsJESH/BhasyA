@@ -1,0 +1,61 @@
+<aside id="asidenav">
+    <nav class="nav flex-container">
+        <div class="logo">
+            <a href="/"><img class="bhasyalogomain" src="/Resource/logo.png" alt="Bhasya"></a>
+        </div>
+        <div class="navicon flex-container">
+            <div class="navup flex-container">
+                <a href="/" class="icon">
+                    <i class="fa-solid fa-house icona"></i>
+                    <div class="iconname">Home</div>
+                </a>
+                <a href="/show" class="icon">
+                    <i class="fa-solid fa-tv icona"></i>
+                    <div class="iconname">Show</div>
+                </a>
+                <a href="/test" class="icon">
+                    <i class="fa-solid fa-list-check icona"></i>
+                    <div class="iconname">Test</div>
+                </a>
+                <a href="/user" class="icon">
+                    <i class="fa-regular fa-user icona"></i>
+                    <div class="iconname">User</div>
+                </a>
+            </div>
+            <div class="navdown flex-container">
+                <button class="icon menu-btn" onclick="toggleMenu()">
+                    <i class="fa-solid fa-sliders icona"></i>
+                    <div class="iconname">Setting</div>
+                </button>
+            </div>
+        </div>
+    </nav>
+</aside>
+
+<div class="popup-menu" id="popupMenu">
+    <a href="/user"><div class="iconname"><i class="fa-regular fa-user icona"> </i>User</div></a>
+    <a href="#"><div class="iconname"><i class="fa-regular fa-message"> </i>Feedback</div></a>
+    <a href="/logout"><div class="iconname"><i class="fa-solid fa-right-from-bracket"> </i>Logout</div></a>
+</div>
+
+<div class="navmob">
+    <a href="/" class="icon"><i class="fa-solid fa-house icona"></i></a>
+    <a href="/show" class="icon"><i class="fa-solid fa-tv icona"></i></a>
+    <a href="/test" class="icon"><i class="fa-solid fa-list-check icona"></i></a>
+    <a href="/user" class="icon"><i class="fa-regular fa-user icona"></i></a>
+</div>
+
+<script defer>
+    function toggleMenu() {
+        var menu = document.getElementById("popupMenu");
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    document.addEventListener("click", function(event) {
+        var menu = document.getElementById("popupMenu");
+        var button = document.querySelector(".menu-btn");
+        if (!menu.contains(event.target) && !button.contains(event.target)) {
+            menu.style.display = "none";
+        }
+    });
+</script>

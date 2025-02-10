@@ -1,0 +1,124 @@
+*{
+    box-sizing: border-box;
+    padding: 0%;
+    margin:0%;
+    color:white;
+    font-family: "Poppins", serif;
+}
+
+body{
+    width: 100%;
+    background-color: #161717;
+}
+
+.ovprocon,.clipsdescon,.clipspro,.exampro,.examdescon,.examrec{
+    width: 100%;
+}
+
+.repline,.desline{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: white 1px dashed;
+    padding-inline: 0.5rem;
+}
+
+.repline:last-child,.desline:last-child{
+    border: none;
+}
+.repdet,.clipdis{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.repres,.disres{
+    width: 25%;
+}
+
+.replet{
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: "Caveat", "Courier New", Courier, monospace;
+}
+
+table{
+    margin-top: 1rem;
+    text-align: left;
+    border:none;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr{
+    border-bottom: white 1px dashed;
+}
+tr:first-child{
+    border-top:white 1px solid;
+}
+tr:last-child{
+    border: none;
+}
+.cliptb th:first-child,.cliptb td:first-child {
+    width: 80%;
+    overflow-x:scroll;
+    scrollbar-width: none;
+    white-space: nowrap;
+    max-width: 0; 
+    padding-left: 1rem;
+    padding-block: 0.2rem;
+    border-right: rgba(255, 255, 255, 0.2) 1px dashed;
+}
+
+.cliptb th:last-child,.cliptb td:last-child {
+    width: 20%;
+    text-align: center;
+    white-space: nowrap; 
+}
+
+.examtb{        
+    text-align: center;
+}
+
+.examtb th,td{
+    width: 10%;
+    border-right: rgba(255, 255, 255, 0.2) 1px dashed;
+}
+.examtb th:last-child,td:last-child{
+    border-right:none;
+}
+
+.examtb th:first-child,.examtb td:first-child {
+    width: 30%;
+    overflow: visible;
+    padding-left: 1rem;
+    padding-block: 0.2rem;
+    text-align: left;
+}
+
+@media (max-width: 520px) {
+    .repres,.disres{
+        width: 35%;
+    }
+
+    .examrec{
+        overflow-x: scroll;
+        scrollbar-width: none;
+    }
+
+    .examtb th:first-child, .examtb td:first-child {
+        width:fit-content;
+        text-align: center;
+        white-space: nowrap;
+        padding-inline: 0.5rem;
+    }
+
+    .examtb th{
+        width: fit-content;
+        white-space: nowrap;
+        /* border: green 1px solid; */
+        padding: 0.5rem;
+    }
+
+    
+
+}

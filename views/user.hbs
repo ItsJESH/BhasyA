@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | Bhasya</title>
+    <link rel="stylesheet" href="./user.css ">
+    <link rel="stylesheet" href="./nav.css ">
+    <link rel="stylesheet" href="./procon.css">
+    <script src="https://kit.fontawesome.com/c4cb78a369.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lovers+Quarrel&family=Pacifico&family=Caveat&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+    <div class="main-page flex-container">
+        {{> navbar}}
+        <div class="rightcon">
+            <header class="header">
+                <div class="left">
+                    <div class="welcome">
+                        User Profile
+                    </div>
+                    <div class="lan">
+                        Language:
+                        <select name="lan" class="select" id="lan">
+                            <option value="English">
+                                English
+                            </option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="right">
+                    <a href="/">
+                        <h1 class="APPNAME">
+                            B<span class="hasya">hasya</span>
+                        </h1>
+                    </a>
+                </div>
+            </header>
+            <main>
+                <div class="userDetailscon">
+                    <div class="userdetail">
+                        <div class="ud">Name: <span>{{{user.name}}}</span></div>
+                        <div class="ud">Username: <span>{{{user.username}}}</span></div>
+                        <div class="ud">Email: <span>{{{user.email}}}</span></div>
+                        <div class="ud">Mobile: <span>{{{user.number}}}</span></div>
+                        <div class="ud">Date Of Birth: <span>{{{user.DOB}}}</span></div>
+                        <div class="ud">Gender: <span>{{{user.gender}}}</span></div>
+                    </div>
+                    <div class="tgbtn">
+                        <span class="editbtn">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                        </span>
+                        <span class="barbtn" onclick="toggleMenuuser()">
+                            <i class="fa-solid fa-bars"></i>
+                        </span>
+                        <div class="popup-menu-user" id="popupMenuuser">
+                            <a href="#"><div class="iconnameu"><i class="fa-regular fa-pen-to-square"></i>Edit Profile</div></a>
+                            <a href="#"><div class="iconnameu"><i class="fa-regular fa-message"> </i>Feedback</div></a>
+                            <a href="/logout"><div class="iconnameu"><i class="fa-solid fa-right-from-bracket"> </i>Logout</div></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="maincon">
+                    <div class="status">
+                        <div class="statusboxs cyan">
+                            <div class="sbox">Total Clips Watch <div class="nbx numbersfonts">{{{userRec.overall.totalClips}}}</div>
+                            </div>
+                        </div>
+                        <div class="statusboxs blue">
+                            <div class="sbox">Total Watch Time<div class="nbx numbersfonts">{{{userRec.overall.totalTimeSpent}}}</div>
+                            </div>
+                        </div>
+                        <div class="statusboxs purple">
+                            <div class="sbox">Total Test<div class="nbx numbersfonts">{{{userRec.overall.totalExams}}}</div>
+                            </div>
+                        </div>
+                        <div class="statusboxs yellow">
+                            <div class="sbox">Total Score<div class="nbx numbersfonts">{{{userRec.overall.totalScore}}}</div>
+                            </div>
+                        </div>
+                        <div class="statusboxs pink">
+                            <div class="sbox">Streak<div class="nbx numbersfonts">{{{userRec.overall.longestStreak}}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="procon">
+                        <div class="proopt">
+                            <div class="optbtn">
+                                <input type="date" id="dateofpro">
+                            </div>
+                            <div class="optbtn opts isActive">
+                                <button>
+                                    Overall
+                                </button>
+                            </div>
+                            <div class="optbtn opts">
+                                <button>
+                                    Clipsa
+                                </button>
+                            </div>
+                            <div class="optbtn opts">
+                                <button>
+                                    Exams
+                                </button>
+                            </div>
+                        </div>
+                        <div class="prodetcon">
+                            <div class="prodet">
+                                {{> overallrec}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            
+<footer>
+                <div class="footer-links">
+                    <a href="https://github.com/ItsJESH/Bhasya?tab=MIT-1-ov-file">&copy; 2025 Bhasya All rights reserved.</a>
+                    <span>|</span>
+                    <a href="https://github.com/ItsJESH/Bhasya" target="_blank" class="footer-link">Github</a>
+                    <span>|</span>
+                    <a href="https://bhasya.hashnode.dev/" target="_blank" class="footer-link">Blog</a>
+                    <span>|</span>
+                    <a href="https://www.instagram.com/jenish.1911/" target="_blank" class="footer-link">Instagram</a>
+                </div>
+            </footer>
+        </div>
+        
+    </div>
+    <script defer>
+        document.getElementById("dateofpro").value=new Date().toISOString().split('T')[0];
+        const options = document.querySelectorAll(".opts");
+
+  options.forEach(option => {
+      option.addEventListener("click", function() {
+          // Remove isActive class from all elements
+          options.forEach(opt => opt.classList.remove("isActive"));
+          // Add isActive class to the clicked element
+          this.classList.add("isActive");
+      });
+  });
+  function toggleMenuuser() {
+    const menu = document.getElementById("popupMenuuser");
+
+    // Check if the menu is currently displayed
+    if (menu.style.display === "flex") {
+        menu.style.display = "none"; // Hide menu
+    } else {
+        menu.style.display = "flex"; // Show menu
+    }
+}
+
+    </script>
+
+</body>
+</html>

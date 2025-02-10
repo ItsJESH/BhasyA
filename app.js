@@ -31,6 +31,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => {console.log("DB Connection S
 
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
+hbs.registerPartials(path.join(__dirname, "views/partials"));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(morgan(":url :method"))
@@ -38,10 +39,13 @@ app.use(morgan(":url :method"))
 // Routes
 const authRoutes = require("./routes/loginRoutes");
 const homeRoutes = require("./routes/homeRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 app.use("/", authRoutes);
 
 app.use("/", homeRoutes);
+
+app.use("/",userRoutes)
 
 app.get("/*", (req, res) => {
   res.status(404);
@@ -49,12 +53,12 @@ app.get("/*", (req, res) => {
 });
 
 
-// app.use((err,req,res,next) => {
-//   if (err) {
-//     res.send("Error: " + err.message)
-//   }
-//   next();
-// })
+app.use((err,req,res,next) => {
+  if (err) {
+    res.send("Error: " + err.message)
+  }
+  next();
+})
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

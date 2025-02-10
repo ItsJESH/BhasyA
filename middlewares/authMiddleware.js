@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const makeDailyRec = require("./makeDailyRec");
 
 const authMiddleware = (req, res, next) => {
   const token = req.cookies.authToken; // Get the token from the cookies
@@ -6,7 +7,7 @@ const authMiddleware = (req, res, next) => {
   if (!token) {
     return res
       .status(401)
-      .redirect("/login?error=" + encodeURIComponent("Please Login Again"));
+      .redirect("/login");
     // No token found
   }
  
@@ -19,8 +20,8 @@ const authMiddleware = (req, res, next) => {
             encodeURIComponent("Not authorized, Please Login Again")
         ); // Invalid token
     }
-
-    next(); // Proceed to the next middleware/route handler
+    return makeDailyRec(req, res, next);
+    // next(); // Proceed to the next middleware/route handler
   }); // User is authenticated, proceed to the next route
 };
 

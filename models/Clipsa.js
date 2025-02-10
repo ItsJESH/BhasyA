@@ -19,8 +19,7 @@ const clipSchema = new mongoose.Schema(
     watchBy: [
       {
         userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-        username: { type: String },
-        timeSpent: { type: Number }, // Time spent watching in seconds
+        username: { type: String },// Time spent watching in seconds
         date: { type: Date, default: Date.now } // Date of viewing
       }
     ]
