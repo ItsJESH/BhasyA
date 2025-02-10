@@ -19,45 +19,7 @@
 
 <body>
     <div class="main-page flex-container">
-        <aside id="asidenav">
-            <nav class="nav flex-container">
-                <div class="logo">
-                    <a href="./index.html"><img class="bhasyalogomain" src="./Resource/logo.png"
-                            alt="Bhasya"></a>
-                </div>
-                <div class="navicon flex-container">
-                    <div class="navup flex-container">
-                        <a href="./index.html" class="icon">
-                            <i class="fa-solid fa-house icona"></i>
-                            <div class="iconname" id="iconname">Home</div>
-                        </a>
-                        <a href="./index.html" class="icon">
-                            <i class="fa-solid fa-tv icona"></i>
-                            <div class="iconname" id="iconname">Show</div>
-                        </a>
-                        <a href="./test.html" class="icon">
-                            <i class="fa-solid fa-list-check icona"></i>
-                            <div class="iconname" id="iconname">Test</div>
-                        </a>
-                        <a href="./index.html" class="icon">
-                            <i class="fa-regular fa-user icona"></i>
-                            <div class="iconname" id="iconname">User</div>
-                        </a>
-                    </div>
-                    <div class="navdown flex-container">
-                        <button href="./login.html" class="icon menu-btn" onclick="toggleMenu()">
-                            <i class="fa-solid fa-sliders icona"></i>
-                            <div class="iconname" id="iconname">Setting</div>
-                        </button>
-                    </div>
-                </div>
-            </nav>
-        </aside>
-        <div class="popup-menu" id="popupMenu">
-        <a href="#"><div class="iconname" id="iconname"><i class="fa-regular fa-user icona">&nbsp;</i>User</div></a>
-        <a href="#"><div class="iconname" id="iconname"><i class="fa-regular fa-message">&nbsp;</i>Feedback</div></a>
-        <a href="/logout"><div class="iconname" id="iconname"><i class="fa-solid fa-right-from-bracket">&nbsp;</i>Logout</div></a>
-        </div>
+        {{> navbar }}
         <div class="rightcon">
             <header class="header">
                 <div class="left">
@@ -75,7 +37,7 @@
                     </div>
                 </div>
                 <div class="right">
-                    <a href="./index.html">
+                    <a href="/">
                         <h1 class="APPNAME">
                             B<span class="hasya">hasya</span>
                         </h1>
@@ -121,19 +83,19 @@
                                 </div>
                             </div>
                             <div class="card badge">
-                                <a href="./index.html" class="acard bedcard"></a>
+                                <a href="/user" class="acard bedcard"></a>
                                 <div class="card-content bedcc">
                                     <p>Badges</p>
                                 </div>
                             </div>
                             <div class="card history">
-                                <a href="./index.html" class="acard hiscard"></a>
+                                <a href="/user" class="acard hiscard"></a>
                                 <div class="card-content hiscc">
                                     <p>History</p>
                                 </div>
                             </div>
                             <div class="card progress">
-                                <a href="./index.html" class="acard procard"></a>
+                                <a href="/user" class="acard procard"></a>
                                 <div class="card-content procc">
                                     <p>Progress</p>
                                 </div>
@@ -154,43 +116,10 @@
                 </div>
             </footer>
         </div>
-        <div class="navmob">
-            <a href="./index.html" class="icon">
-                <i class="fa-solid fa-house icona"></i>
-            </a>
-            <a href="./login.html" class="icon">
-                <i class="fa-solid fa-tv icona"></i>
-            </a>
-            <a href="./test.html" class="icon">
-                <i class="fa-solid fa-list-check icona"></i>
-            </a>
-            <a href="./index.html" class="icon">
-                <i class="fa-regular fa-user icona"></i>
-            </a>
-        </div>
+        
     </div>
 
-<script>
 
-function toggleMenu() {
-            var menu = document.getElementById("popupMenu");
-            if (menu.style.display === "block") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "block";
-            }
-        }
-
-        // Close the menu when clicking outside
-        document.addEventListener("click", function(event) {
-            var menu = document.getElementById("popupMenu");
-            var button = document.querySelector(".menu-btn");
-
-            if (!menu.contains(event.target) && !button.contains(event.target)) {
-                menu.style.display = "none";
-            }
-        });
-</script>
 
 </body>
 
