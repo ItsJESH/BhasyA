@@ -95,6 +95,15 @@ tr:last-child{
     text-align: left;
 }
 
+.ndf{
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5% 2%;
+}
+
+
 @media (max-width: 520px) {
     .repres,.disres{
         width: 35%;
@@ -119,6 +128,13 @@ tr:last-child{
         padding: 0.5rem;
     }
 
+    .ndf{
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0%;
+    }
     
 
 }

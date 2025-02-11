@@ -40,12 +40,18 @@ app.use(morgan(":url :method"))
 const authRoutes = require("./routes/loginRoutes");
 const homeRoutes = require("./routes/homeRoutes");
 const userRoutes = require("./routes/userRoutes");
+const clipsRoutes = require("./routes/clipsRoutes");
+const getRes = require("./routes/getResult");
 
 app.use("/", authRoutes);
 
 app.use("/", homeRoutes);
 
-app.use("/",userRoutes)
+app.use("/",userRoutes);
+
+app.use("/",clipsRoutes);
+
+app.use("/",getRes);
 
 app.get("/*", (req, res) => {
   res.status(404);
