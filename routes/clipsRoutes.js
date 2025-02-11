@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const userController = require("../controllers/userController");
+const clipController = require("../controllers/clipController");
 const authMiddleware = require("../middlewares/authMiddleware");
 
-
-router.get("/user", authMiddleware,userController.getProfile);
+router.get("/clip", authMiddleware,clipController.getHome);
 
 module.exports = router;
