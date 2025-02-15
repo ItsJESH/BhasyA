@@ -10,10 +10,17 @@ const cookieParser = require("cookie-parser");
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+try{
+
 mongoose.connect(process.env.MONGO_URI).then(() => {console.log("DB Connection Success");
 }).catch((err) => {console.error("DB Connection Failed");
   console.error(err);
   process.exit(1);});
+
+}catch(err){
+console.error("DB Connection Failed");
+}  
   
   // Middleware
   app.use(cookieParser());
@@ -41,6 +48,7 @@ const authRoutes = require("./routes/loginRoutes");
 const homeRoutes = require("./routes/homeRoutes");
 const userRoutes = require("./routes/userRoutes");
 const clipsRoutes = require("./routes/clipsRoutes");
+const examRoutes = require("./routes/examRoutes");
 const getRes = require("./routes/getResult");
 
 app.use("/", authRoutes);
@@ -50,12 +58,13 @@ app.use("/", homeRoutes);
 app.use("/",userRoutes);
 
 app.use("/",clipsRoutes);
+app.use("/",examRoutes);
 
 app.use("/",getRes);
 
 app.get("/*", (req, res) => {
   res.status(404);
-  res.send("Page Not Found!");
+  res.render('404error')
 });
 
 

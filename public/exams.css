@@ -1,0 +1,224 @@
+* {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    font-family: "Poppins", Arial, Helvetica, sans-serif, Courier, monospace;
+  }
+  
+  :root {
+    --main-color: White;
+  }
+  
+  .rightcon {
+    width: 100%;
+    /* border: green 1px solid; */
+    padding: 2rem;
+    height: 100%;
+    position: relative;
+  }
+  
+  .rightcon header {
+    /* border: red 1px solid; */
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  header h2 {
+    /* border: green 1px solid; */
+    font-size: 2.2rem;
+  }
+  
+  .APPNAME {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    padding: 0.5rem;
+    font-size: 4.25rem;
+    font-family: "Tangerine", serif;
+    /* border: green 1px solid; */
+    text-shadow: white 1px 1px 25px;
+  }
+  
+  .hasya {
+    font-family: "Lovers Quarrel", serif;
+    font-weight: lighter;
+    /* padding-right: 1rem; */
+  }
+  
+  .econbox {
+    /* border: red 1px solid; */
+    display: flex;
+    flex-direction: column;
+    height: 85%;
+  }
+  
+  .econ {
+    border: rgba(255, 255, 255, 0.2) 1px solid;
+    padding: 2rem;
+    box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 0.5rem;
+    height: 80%;
+    background-color: #161717;
+    border-radius: 25px;
+  }
+  
+  .buttombtns {
+    /* border: green 1px solid; */
+    display: flex;
+    width: 100%;
+    margin-top: 1rem;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  
+  .hints {
+    /* border: yellow 1px solid; */
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  
+  .hints .hint {
+    /* border: red 1px solid; */
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    box-shadow: rgba(255, 255, 255, 0.5) 1px 1px 0.2rem;
+    padding-top: 1.1%;
+    border-radius: 10px;
+    overflow: hidden;
+    border: rgba(255, 255, 255, 0.2) 1px solid;
+  }
+  
+  .hint .hinb {
+    /* border: yellow 1px solid; */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #161717;
+    align-items: center;
+    font-size: 1.1rem;
+    border-radius: 0px 0px 10px 10px;
+  }
+  
+  .hint2 {
+    background-color: #c49b00;
+  }
+  .hint1 {
+    background-color: #4ee2b5;
+  }
+  
+  .hint1 .showbtn {
+    background-color: #4ee2b5;
+    box-shadow: #4ee2b6 0px 0px 5px;
+  }
+  
+  .hint2 .showbtn {
+    background-color: #c49b00;
+    box-shadow: #c49b00 0px 0px 5px;
+  }
+  
+  .hinb .showbtn {
+    border: none;
+    font-weight: 450;
+    width: 80%;
+    height: 50%;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    color: black;
+    border: #161717 1px solid;
+    cursor: pointer;
+  }
+  
+  .sub {
+    /* border: blue 1px solid; */
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  
+  .sub .subbtn {
+    border: red 1px solid;
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    box-shadow: rgba(255, 255, 255, 0.5) 1px 1px 0.2rem;
+    padding-top: 1.1%;
+    border-radius: 10px;
+    overflow: hidden;
+    border: rgba(255, 255, 255, 0.2) 1px solid;
+  }
+  .sub .skipbtn {
+    background-color: #8b0000;
+  }
+  .sub .candn {
+    background-color: rgb(0, 100, 0);
+  }
+  
+  .subbtn button {
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    font-size: 110%;
+    background-color: #161717;
+  }
+  
+  .subbtn .sbtn {
+    color: #8b0000;
+  }
+  
+  .subbtn .cnbtn {
+    color: rgb(0, 100, 0);
+  }
+  
+  footer {
+    color: #fff;
+    text-align: center;
+    /* border: red 1px solid; */
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footer-link {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-link:hover {
+    color: #ffffff;
+    text-shadow: white 1px 1px 10px; /* Example hover color */
+  }
+  
+  @media (max-width: 520px) {
+    .rightcon {
+      padding: 5%;
+    }
+    header {
+      flex-direction: column;
+      /* border: blue solid; */
+      margin-bottom: 3%;
+      /* align-items: center;Stack elements vertically */
+    }
+    header .right {
+      text-align: center;
+      order: -1;
+    }
+  
+    .buttombtns {
+      flex-direction: column-reverse;
+      /* border: red solid; */
+    }
+  
+    footer {
+      margin-top: 7%;
+      padding-bottom: 17%;
+      text-align: center;
+      width: 100%;
+      font-size: 0.5rem;
+    }
+  }
+  
