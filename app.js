@@ -10,10 +10,17 @@ const cookieParser = require("cookie-parser");
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+try{
+
 mongoose.connect(process.env.MONGO_URI).then(() => {console.log("DB Connection Success");
 }).catch((err) => {console.error("DB Connection Failed");
   console.error(err);
   process.exit(1);});
+
+}catch(err){
+console.error("DB Connection Failed");
+}  
   
   // Middleware
   app.use(cookieParser());
