@@ -66,7 +66,9 @@ exports.registerUser = async (req, res) => {
       DOB: bday,
       verificationToken: verificationToken,
     });
-    const verificationLink = `http://localhost:8383/verify/${verificationToken}`;
+    // const verificationLink = `http://localhost:8383/verify/${verificationToken}`;
+    
+    const verificationLink = `https://bhasya.vercel.app/verify/${verificationToken}`;
     // 
     await sendEmail(
       email,

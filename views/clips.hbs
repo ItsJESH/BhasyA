@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Video Player</title>
+    <link rel="stylesheet" href="./clips.css">
+    <script src="https://kit.fontawesome.com/c4cb78a369.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="video-container">
+        <video id="video" class="video" controls>
+            <source
+                src="./clipsResource/y2mate.com - The North Remembers ForTheThrone Clip  Game of Thrones  Season 7_720pHF.mp4"
+                type="video/mp4">
+            <track src="./clipsResource/x.vtt"  kind="subtitles" srclang="en" label="English" default>
+            <track src="./clipsResource/y.vtt"  kind="subtitles" srclang="hi" label="Hindi" default>
+
+            Your browser does not support the video tag.
+        </video>
+
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <button id="home-btn" class="home-btn"><a href="/"><i class="fa-solid fa-house"></i></a></button>
+                <span id="video-title">Video Title</span>
+            </div>
+
+            <div class="nextbtn">
+                <div class="nbtn"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+    </div>
+
+<script>
+    // Select elements
+const video = document.getElementById("video");
+
+const tracks = video.textTracks;
+tracks[0].mode = "showing"; // English
+tracks[1].mode = "showing"; // Hindi
+
+</script>
+</body>
+
+</html>

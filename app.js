@@ -41,6 +41,7 @@ const authRoutes = require("./routes/loginRoutes");
 const homeRoutes = require("./routes/homeRoutes");
 const userRoutes = require("./routes/userRoutes");
 const clipsRoutes = require("./routes/clipsRoutes");
+const examRoutes = require("./routes/examRoutes");
 const getRes = require("./routes/getResult");
 
 app.use("/", authRoutes);
@@ -50,12 +51,13 @@ app.use("/", homeRoutes);
 app.use("/",userRoutes);
 
 app.use("/",clipsRoutes);
+app.use("/",examRoutes);
 
 app.use("/",getRes);
 
 app.get("/*", (req, res) => {
   res.status(404);
-  res.send("Page Not Found!");
+  res.render('404error')
 });
 
 
